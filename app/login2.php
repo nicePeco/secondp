@@ -19,8 +19,6 @@ if (mysqli_connect_errno()) {
     $error = mysqli_connect_error();
 }
 
-$result = mysqli_query($db, 'SELECT * FROM `articles`');
-
 if (isset($_POST['type']) && $_POST['type'] === 'newArticle') {
     $title = isset($_POST['title']) ? cleanup($_POST['title']) : '';
     $image = isset($_POST['image_url']) ? cleanup($_POST['image_url']) : '';
@@ -69,6 +67,8 @@ if (!empty($_GET['edit'])) {
     }
 
 }
+
+$result = mysqli_query($db, 'SELECT * FROM `articles`');
 
 if (isset($_POST['logout'])) {
     session_destroy();
